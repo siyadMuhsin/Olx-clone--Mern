@@ -88,7 +88,9 @@ const addProduct = async (req, res) => {
 const list_Products=async (req,res)=>{
   console.log("running");
   
-  const products= await Products.find()
+  const products= await Products.find().populate('createdBy','name')
+  console.log(products);
+  
   if(products){
     return res.json({success:true,products:products})
   }

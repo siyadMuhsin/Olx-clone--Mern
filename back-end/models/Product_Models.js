@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+
 const productSchema=new mongoose.Schema({
     productName:{
         type:String,
@@ -21,9 +22,11 @@ const productSchema=new mongoose.Schema({
 
         required:true
     },
-    createdBy:{
-        type:String
-    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId, // Reference to a User
+        ref: 'User', // Name of the referenced model
+        required: true,
+      },
     date:{
         type:String,
         

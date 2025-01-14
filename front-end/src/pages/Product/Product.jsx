@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import API from "../../../axiosConfic.js";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ChevronLeft, ChevronRight, Share2, Heart } from "lucide-react";
+import { ChevronLeft, MapPin, Share2, Heart } from "lucide-react";
 import Navbar from "@/components/Navbar/Navbar.jsx";
 import logo from "../../assets/olx-logo.svg";
 import AddProduct from "../../components/Navbar/AddProduct.jsx";
@@ -19,14 +19,6 @@ const Product = () => {
   }, [product, navigate]);
 
   const [isProductPage, setProductPage] = useState(false);
-  const [user, setUser] = useState("");
-
-  useEffect(() => {
-    const details = JSON.parse(localStorage.getItem("user"));
-    if (details && details.name) {
-      setUser(details.name);
-    }
-  }, []);
 
   if (!product) {
     return null;
@@ -58,7 +50,7 @@ const Product = () => {
               <h1 className="text-3xl font-bold">
                 ₹ {product.price.toLocaleString()}
               </h1>
-              <h2 className="mt-5 text-xl text-black-600 ">
+              <h2 className="mt-5 text-xl text-black-600 font-semibold">
                 {product.productName}
               </h2>
             </div>
@@ -71,17 +63,15 @@ const Product = () => {
               </button>
             </div>
           </div>
-          <div className="mb-6 mt-14">
-            <h3 className="text-xl font-semibold mb-3">Details</h3>
+          <div className="mb-6 mt-10 ">
+            <h3 className="text-xl font-semibold mb-1">Details</h3>
             <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="text-gray-600">Address:</span>
-                <span>{product.address}</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="text-gray-600">Discription:</span>
+              <div className="flex items-center gap-2 mb-4">
                 <span>{product.description}</span>
+              </div>
+              <div className="flex items-center gap-2 cursor-pointer">
+                <MapPin className="text-red-600"></MapPin>
+                <span>{product.address}</span>
               </div>
             </div>
           </div>
@@ -96,8 +86,10 @@ const Product = () => {
                 />
               </div>
               <div>
-                <p className="font-medium">{user}</p>
-                <p className="text-sm text-gray-500">Member since Jan 2024</p>
+                <p className="font-medium">{product.createdBy.name}</p>
+                <span className="text-red-600">
+                  {timeHandle(Date.now() - product.date)}
+                </span>
               </div>
             </div>
           </div>

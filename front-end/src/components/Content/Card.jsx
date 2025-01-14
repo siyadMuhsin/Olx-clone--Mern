@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
         <div className="location-date">
           <span>{product.address}</span>
           {/* Replace timeHandle with a valid function */}
-          <span>{product.date}</span>
+          <span className="text-blue-500">{timeHandle(Date.now()-product.date)}</span>
         </div>
       </div>
     </div>
