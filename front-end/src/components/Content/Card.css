@@ -1,0 +1,95 @@
+/* General Card Styles */
+.product-card {
+    border: 2px solid #e5e5e5; /* Light border around the card */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden; /* Prevents overflow outside the card */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth hover transition */
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+  }
+  
+  /* Image Container */
+  .image-container {
+    position: relative; /* For positioning the tags/buttons */
+  }
+  
+  .product-image {
+    padding: 3px;
+    width: 100%; /* Full width of the container */
+    height: 100%; /* Fixed height */
+    object-fit: cover; /* Ensures image covers the space without distortion */
+  }
+  
+  
+  
+  
+  
+  /* Product Info Section */
+  .product-info {
+    padding: 10px;
+  }
+  
+  /* Price */
+  .product-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #111; /* Dark color for the price */
+  }
+  
+  /* Description */
+  /* Product Info Section */
+.product-info {
+    padding: 10px;
+  }
+  
+  /* Price */
+  .product-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #111; /* Dark color for the price */
+  }
+  
+  /* Description */
+  .product-description {
+    margin-top: 2px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #212c2b; /* Lighter color for the description */
+    white-space: nowrap; /* Prevents the text from wrapping to the next line */
+    overflow: hidden; /* Hides the overflowed text */
+    text-overflow: ellipsis; /* Adds '...' at the end of the text if it overflows */
+    display: block; /* Ensures the text is treated as a block-level element */
+    max-width: 100%; /* Ensures the description stays within its container */
+  }
+  
+  /* Product Name */
+  .product-name {
+    margin-top: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #111; /* Dark color for the product name */
+  }
+  
+  /* Location and Date */
+  .location-date {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #666; /* Lighter color for the location and date */
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Hides the overflowed text */
+    text-overflow: ellipsis; /* Adds '...' if the text overflows */
+  }
+  
+  
+  /* Product Name */
+  .product-name {
+    margin-top: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #111; /* Dark color for the product name */
+  }
+  

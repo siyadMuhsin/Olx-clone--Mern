@@ -1,0 +1,80 @@
+
+  import ProductCard from "./Card";
+  const MarketplaceListing = ({products}) => {
+
+  
+    return (
+      <div className="container">
+        <h2 className="heading">Fresh recommendations</h2>
+        
+        <div className="grid">
+          {products.map((product, index) => (
+            
+            <ProductCard key={index} product={product} />
+          ))}
+          
+         
+        </div>
+  
+        <style jsx>{`
+          .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+          }
+  
+          .heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 24px;
+          }
+  
+          .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+          }
+  
+          .sell-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 24px;
+            background: #3b82f6;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+  
+          .sell-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+          }
+  
+          .sell-card p {
+            margin-bottom: 24px;
+          }
+  
+          .sell-card button {
+            background: white;
+            color: #3b82f6;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+          }
+  
+          .sell-card button:hover {
+            background: #f8fafc;
+          }
+        `}</style>
+      </div>
+    );
+  };
+  
+  export default MarketplaceListing;
