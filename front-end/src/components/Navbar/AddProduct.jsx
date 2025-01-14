@@ -7,21 +7,16 @@ import Loading from "../Loading/Loading";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "@/pages/Home/Home";
 
-
 const AddProduct = ({ closeModal }) => {
-  const {isAddProduct,setAddProduct}=useContext(ProductContext)
-
- 
-  
-
+  const { isAddProduct, setAddProduct } = useContext(ProductContext);
 
   const [user, setUser] = useState(null);
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
-  const [address,setAddress]=useState('')
+  const [address, setAddress] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState(null);
-  const [isLoading,setIsLoading]=useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const cropperRef = useRef(null);
 
@@ -67,18 +62,17 @@ const AddProduct = ({ closeModal }) => {
       toast.error("Price must be a positive integer");
       return;
     }
-    if(!address.trim()){
+    if (!address.trim()) {
       toast.error("Address must be required");
       return;
-
     }
 
-    setIsLoading(true)
+    setIsLoading(true);
     const formData = new FormData();
     formData.append("productName", productName);
     formData.append("description", description);
     formData.append("price", price);
-    formData.append('address',address)
+    formData.append("address", address);
     formData.append("from", user.id);
 
     try {
@@ -108,8 +102,7 @@ const AddProduct = ({ closeModal }) => {
           toast.success(response.data.message);
           closeModal();
           // navigate('/')
-          setAddProduct(!isAddProduct)
-
+          setAddProduct(!isAddProduct);
         } else {
           toast.error(response.data.message);
           closeModal();
@@ -117,15 +110,14 @@ const AddProduct = ({ closeModal }) => {
       }
     } catch (error) {
       console.log(error);
-    }finally{
-      setIsLoading(false)
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    
     <div>
-      <Loading isLoading={isLoading}/>  
+      <Loading isLoading={isLoading} />
       <div className="z-20 fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
         <div
           className="bg-white p-6 rounded-lg w-1/3 max-h-[90vh] overflow-y-auto"
@@ -149,6 +141,7 @@ const AddProduct = ({ closeModal }) => {
           <div className="mb-4">
             <label className="block mb-1">Description</label>
             <textarea
+              style={{ resize: "none", height: "80px" }}
               name="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -171,6 +164,7 @@ const AddProduct = ({ closeModal }) => {
           <div className="mb-4">
             <label className="block mb-1">Address</label>
             <textarea
+              style={{ resize: "none", height: "80px" }}
               name="address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}

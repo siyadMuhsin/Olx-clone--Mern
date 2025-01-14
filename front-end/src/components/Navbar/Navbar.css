@@ -5,21 +5,3 @@
     border: solid 2px;
     border-radius: 10px;
 }
-/* .sell-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to right, #38b2ac, #2c7a7b);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .sell-btn:hover {
-    background: linear-gradient(to right, #319795, #285e61);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-  } */

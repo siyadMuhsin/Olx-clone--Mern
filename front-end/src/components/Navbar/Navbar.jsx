@@ -10,10 +10,10 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import { toast } from "react-toastify";
 import AddProduct from "./AddProduct";
 
-const Navbar = () => {
+const Navbar = ({setModalOpen,isProductPage}) => {
   const navigate = useNavigate();
   const [isAuthenticated, setAuthenticated] = useState(false);
-  const [modalOpen,setModalOpen]=useState(false)
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     setAuthenticated(!!token);
@@ -48,9 +48,7 @@ const handleSell=()=>{
     setModalOpen(true)
   }
 }
-const closeModal=()=>{
-  setModalOpen(false)
-}
+
   return (
     <nav className="flex items-center justify-between px-4 py-2 bg-white shadow-sm">
       {/* Logo */}
@@ -96,19 +94,24 @@ const closeModal=()=>{
         </button>
 
         {/* Sell Button */}
-        <div className="relative sell-btn">
-          <img
-            src={sell_icon}
-            alt="Sell Icon"
-            className="w-full h-full object-cover rounded-lg"
-          />
-          <div onClick={handleSell} className="cursor-pointer absolute inset-0 flex items-center justify-center text-black  text-lg font-bold">
-            <Plus className="w-5 h-5 mr-2" />
-            SELL
-          </div>
-        </div>
+        {!isProductPage&&(
+           <div className="relative sell-btn">
+           <img
+             src={sell_icon}
+             alt="Sell Icon"
+             className="w-full h-full object-cover rounded-lg"
+           />
+          
+           <div onClick={handleSell} className="cursor-pointer absolute inset-0 flex items-center justify-center text-black  text-lg font-bold">
+             <Plus className="w-5 h-5 mr-2" />
+             SELL
+           </div>
+         </div>
+           
+          )}
+       
       </div>
-      {modalOpen&&<AddProduct closeModal={closeModal}/>}
+     
     </nav>
   );
 };

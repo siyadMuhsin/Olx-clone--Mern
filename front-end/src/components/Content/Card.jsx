@@ -1,8 +1,7 @@
 import "./Card.css";
-import ProductDetails from "../ProductDetails/ProductDetails";
-import { useState } from "react";
-import { Heading2 } from "lucide-react";
-const timeHandle = (time) => {
+import { Link, Route, useNavigate } from "react-router-dom";
+
+export const timeHandle = (time) => {
   let seconds = Math.floor(time / 1000);
   let minutes = Math.floor(seconds / 60);
   let hours = Math.floor(minutes / 60);
@@ -29,14 +28,14 @@ const timeHandle = (time) => {
 };
 
 const ProductCard = ({ product }) => {
-    const [showProduct,setShowProduc]=useState(false)
- const openShowProduct=()=>{
-    setShowProduc(true)
- }
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/product", { state: { product } });
+  };
 
   return (
-
-    <div onClick={openShowProduct} className="product-card cursor-pointer">
+    <div onClick={handleNavigate} className="product-card cursor-pointer">
       <div className="image-container">
         <img
           className="product-image"
@@ -56,7 +55,8 @@ const ProductCard = ({ product }) => {
 
         <div className="location-date">
           <span>{product.address}</span>
-          <span>{timeHandle(Date.now() - product.date)}</span>
+          {/* Replace timeHandle with a valid function */}
+          <span>{product.date}</span>
         </div>
       </div>
     </div>

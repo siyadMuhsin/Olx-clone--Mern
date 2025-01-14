@@ -1,13 +1,18 @@
 import React, { useEffect, useState ,createContext} from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Content from "../../components/Content/Content";
+import {Routes,Route} from 'react-router-dom'
 import API from "../../../axiosConfic";
 import { Turtle } from "lucide-react";
+import Product from "../Product/Product";
+import AddProduct from "../../components/Navbar/AddProduct";
+
 export const ProductContext = createContext();
 const Home = () => {
  
   const [products, setProducts] = useState([]);
   const [isAddProduct,setAddProduct]=useState("gwsgs")
+  const [modalOpen,setModalOpen]=useState(false)
   const [isLoading,setIsLoading]=useState(false)
   useEffect(() => {
     const fetchData = async () => {
@@ -25,10 +30,15 @@ const Home = () => {
 
     fetchData();
   }, [isAddProduct]);
+
+  const closeModal=()=>{
+    setModalOpen(false)
+  }
   return (
     <>
    <ProductContext.Provider value={{isAddProduct,setAddProduct}}>
-      <Navbar />
+      <Navbar setModalOpen={setModalOpen}/>
+      {modalOpen&&<AddProduct closeModal={closeModal}/>}
       <div className="w-full min-h-screen bg-gray-50">
         {/* Navigation Categories */}
         <nav className="w-full bg-white shadow-sm">
